@@ -1,0 +1,25 @@
+{% load staticfiles %}
+ {% load leaflet_tags %}
+<html>
+ {% leaflet_js %}
+  {% leaflet_css %}
+{% block head %}
+<head>
+
+
+
+
+
+</head>
+{% endblock head %}
+<body style="margin:0; padding:0;">
+{% block filter_box %}
+
+
+{% endblock %}
+{% block before_body_close %}
+
+
+{% endblock before_body_close %}
+</body>
+</html>

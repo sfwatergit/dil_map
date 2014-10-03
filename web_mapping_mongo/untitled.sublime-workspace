@@ -1,0 +1,1469 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"in",
+				"include	Default"
+			],
+			[
+				"t",
+				"tc	test case"
+			],
+			[
+				"it",
+				"imt	import junit.framework.TestCase;"
+			],
+			[
+				"d",
+				"dispatch	dispatch"
+			],
+			[
+				"cur",
+				"current_subject	Default"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "# Django settings for web_mapping_mongo project.\nfrom os.path import dirname, abspath, basename, normpath, join\nfrom sys import path\n\n\n# PATH CONFIGURATION\n# Absolute filesystem path to the Django project directory:\nDJANGO_ROOT = dirname(dirname(abspath(__file__)))\n\n# Absolute filesystem path to the top-level project folder:\nSITE_ROOT = dirname(DJANGO_ROOT)\n\n# Site name:\nSITE_NAME = basename(DJANGO_ROOT)\n\n# Add our project to our pythonpath, this way we don't need to type our project\n# name in our dotted import paths:\npath.append(DJANGO_ROOT)\n# END PATH CONFIGURATION\n\n\n# DEBUG CONFIGURATION\n# See: https://docs.djangoproject.com/en/dev/ref/settings/#debug\nDEBUG = True\nTEMPLATE_DEBUG = DEBUG\n# See: https://docs.djangoproject.com/en/dev/ref/settings/#template-debug\n# END DEBUG CONFIGURATION\n\n\n# EMAIL CONFIGURATION\n# See: https://docs.djangoproject.com/en/dev/ref/settings/#email-backend\nEMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'\n# END EMAIL CONFIGURATION\n\n# STATIC FILE CONFIGURATION\n# See: https://docs.djangoproject.com/en/dev/ref/settings/#static-root\nSTATIC_ROOT = normpath(join(SITE_ROOT, 'web_mapping_mongo/st`atic'))\n\n# See: https://docs.djangoproject.com/en/dev/ref/settings/#static-url\nSTATIC_URL = '/static/'\n\n# See:\n# https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#std:setting-STATICFILES_DIRS\nSTATICFILES_DIRS = (\n    normpath(join(SITE_ROOT, 'web_mapping_mongo/mongo_leaflet/static/')),\n)\n\n# See:\n# https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#staticfiles-finders\nSTATICFILES_FINDERS = (\n    'django.contrib.staticfiles.finders.FileSystemFinder',\n    'django.contrib.staticfiles.finders.AppDirectoriesFinder',\n    # 'django.contrib.staticfiles.finders.DefaultStorageFinder',\n)\n# END STATIC FILE CONFIGURATION\n\n# TEMPLATE CONFIGURATION\n# See:\n# https://docs.djangoproject.com/en/dev/ref/settings/#template-context-processors\nTEMPLATE_CONTEXT_PROCESSORS = (\n    'django.contrib.auth.context_processors.auth',\n    'django.core.context_processors.debug',\n    'django.core.context_processors.i18n',\n    'django.core.context_processors.media',\n    'django.core.context_processors.static',\n    'django.core.context_processors.tz',\n    'django.contrib.messages.context_processors.messages',\n    'django.core.context_processors.request',\n)\n\nADMINS = (\n    ('dil', 'dil@dil.berkeley.edu'),\n)\nMANAGERS = ADMINS\n\nDATABASES = {\n    'default': {\n        'ENGINE': 'django.contrib.gis.db.backends.postgis',\n        # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.\n        'NAME': 'dil_map',  # Or path to database file if using sqlite3.\n        # The following settings are not used with sqlite3:\n        'USER': 'dil',\n        'PASSWORD': 'dil',\n        # Empty for localhost through domain sockets or '127.0.0.1' for\n        # localhost through TCP.\n        'HOST': '127.0.0.1',\n        'PORT': '5432',  # Set to empty string for default.\n    }\n}\n\n\n# Hosts/domain names that are valid for this site; required if DEBUG is False\n# See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts\nALLOWED_HOSTS = []\n\n# Local time zone for this installation. Choices can be found here:\n# http://en.wikipedia.org/wiki/List_of_tz_zones_by_name\n# although not all choices may be available on all operating systems.\n# In a Windows environment this must be set to your system time zone.\nTIME_ZONE = 'America/Los_Angeles'\n\n# Language code for this installation. All choices can be found here:\n# http://www.i18nguy.com/unicode/language-identifiers.html\nLANGUAGE_CODE = 'en-us'\n\nSITE_ID = 1\n\n# If you set this to False, Django will make some optimizations so as not\n# to load the internationalization machinery.\nUSE_I18N = True\n\n# If you set this to False, Django will not format dates, numbers and\n# calendars according to the current locale.\nUSE_L10N = True\n\n# If you set this to False, Django will not use timezone-aware datetimes.\nUSE_TZ = True\n\n# Absolute filesystem path to the directory that will hold user-uploaded files.\n# Example: \"/var/www/example.com/media/\"\nMEDIA_ROOT = ''\n\n# URL that handles the media served from MEDIA_ROOT. Make sure to use a\n# trailing slash.\n# Examples: \"http://example.com/media/\", \"http://media.example.com/\"\nMEDIA_URL = ''\n\n\n# Make this unique, and don't share it with anybody.\nSECRET_KEY = 'w5-gj06*mhy9ghcdvasy9)w#s@1-uz(qghqnt84y$_jakwd(r@'\n\n# List of callables that know how to import templates from various sources.\nTEMPLATE_LOADERS = (\n    'django.template.loaders.filesystem.Loader',\n    'django.template.loaders.app_directories.Loader',\n    # 'django.template.loaders.eggs.Loader',\n)\n\nMIDDLEWARE_CLASSES = (\n    'django.middleware.common.CommonMiddleware',\n    'django.contrib.sessions.middleware.SessionMiddleware',\n    'django.middleware.csrf.CsrfViewMiddleware',\n    'django.contrib.auth.middleware.AuthenticationMiddleware',\n    'django.contrib.messages.middleware.MessageMiddleware',\n    # Uncomment the next line for simple clickjacking protection:\n    'django.middleware.clickjacking.XFrameOptionsMiddleware',\n)\n\nROOT_URLCONF = 'web_mapping_mongo.urls'\n\n# Python dotted path to the WSGI application used by Django's runserver.\nWSGI_APPLICATION = 'web_mapping_mongo.wsgi.application'\n\nimport os\n\nTEMPLATE_DIRS = (\n    os.path.join(os.path.dirname(__file__), '..', 'templates').replace('\\\\', '/'),)\n\nINSTALLED_APPS = (\n    'grappelli',\n    'django.contrib.gis',\n    'django.contrib.staticfiles',\n    'djgeojson',\n    # 'geojson_tiles',\n    'leaflet',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.sites',\n    'django.contrib.messages',\n    # 'debug_toolbar',\n    # 'debug_toolbar_extra',\n    'braces',\n    # Uncomment the next line to enable the admin:\n    'django.contrib.admin',\n    # Uncomment the next line to enable admin documentation:\n    # 'django.contrib.admindocs',\n    'django_extensions',\n    'mongo_leaflet',\n    'leaflet',\n    'import_export',\n    'djgeojson',\n    'easy_maps',\n)\n\n\nSERIALIZATION_MODULES = {\n    'geojson': 'djgeojson.serializers',\n}\n\n# TOOLBAR CONFIGURATION\n# See:\n# http://django-debug-toolbar.readthedocs.org/en/latest/installation.html#explicit-setup\n\n\n# MIDDLEWARE_CLASSES += (\n#     'debug_toolbar.middleware.DebugToolbarMiddleware',\n# )\n\n# DEBUG_TOOLBAR_PATCH_SETTINGS = False\n\n# http://django-debug-toolbar.readthedocs.org/en/latest/installation.html\n# INTERNAL_IPS = ('127.0.0.1',)\n# END TOOLBAR CONFIGURATION\n\n\nLEAFLET_CONFIG = {\n    'DEFAULT_CENTER': (37.9, -45.2),\n    'DEFAULT_ZOOM': 3,\n    'MIN_ZOOM': 3,\n    'MAX_ZOOM': 18,\n    'ATTRIBUTION_PREFIX': 'Data Provided by DIL Participants; Interface Created by Sid Feygin; Powered by Leaflet, Django-Leaflet',\n    'PLUGINS': {\n        'providers': {\n            'js': '/static/map/js/leaflet-providers.js',\n            'auto-include': True, }\n    },\n}\n\nEASY_MAPS_CENTER = (-41.3, 32)\n\nGRAPPELLI_ADMIN_TITLE = 'DIL Project Map Admin'\n\n\n# A sample logging configuration. The only tangible logging\n# performed by this configuration is to send an email to\n# the site admins on every HTTP 500 error when DEBUG=False.\n# See http://docs.djangoproject.com/en/dev/topics/logging for\n# more details on how to customize your logging configuration.\nLOGGING = {\n    'version': 1,\n    'disable_existing_loggers': False,\n    'filters': {\n        'require_debug_false': {\n            '()': 'django.utils.log.RequireDebugFalse'\n        }\n    },\n    'handlers': {\n        'mail_admins': {\n            'level': 'ERROR',\n            'filters': ['require_debug_false'],\n            'class': 'django.utils.log.AdminEmailHandler'\n        }\n    },\n    'loggers': {\n        'django.request': {\n            'handlers': ['mail_admins'],\n            'level': 'ERROR',\n            'propagate': True,\n        },\n    }\n}\n",
+			"file": "settings.py",
+			"file_size": 7770,
+			"file_write_time": 130552129930000000,
+			"settings":
+			{
+				"buffer_size": 7771,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "# Sublime IPython Notebook \nThis is a Sublime Text 3 plugin that emulates IPython notebook interface inside Sublime.\n\n## Disclaimer\nWhile the plugin looks stable so far and I am trying to preserve as much of the notebook data as possible, there are no guarantees that you data will be safe. Do not use it for the notebooks that contain valuable data without doing a backup.\n\n## How to use\n1. Connect to the notebook server using \"Open IPython Notebook\" command. Choose a notebook you want to open and it will open in a separate buffer.\n2. I am trying to support keyboard shortcuts from the web version of the notebook. Currently you can use:\n    - shift+enter - execute current cell\n    - ctrl+enter - execute current cell inplace\n    - ctrl+m, d - delete current cell\n    - ctrl+m, a - add cell above current\n    - ctrl+m, b - add cell below current\n    - ctrl+m, n - select next cell\n    - ctlr+m, p - select previous cell\n    - ctrl+m, y - code cell\n    - ctrl+m, m - markdown cell\n    - ctrl+m, t - raw cell\n    - ctrl+m, s - save notebook (ctrl+s and super+s will work too)\n\n## Notes\n1. You can use %pylab inline. You will not be able to see the plots, but they will be saved in the notebook and available when viewing it through the web interface.\n2. I am using websocket-client library from https://github.com/liris/websocket-client and (slightly patched) subset of the IPython. You do not have to install them separately. \n3. ST3 port was contributed by [chirswl](https://github.com/chriswl)\n4. Dark theme, support for password-protected servers and nicer last-used-server picker was contributed by [z-m-k](https://github.com/z-m-k)\n\n## Vintage Mode\nIn Vintage mode, for the navigation keys to work as expected in IPython Notebook buffer, you need to modify some keybindings. Add the following to your `Key Bindings - User`.\n\n1. Add a `context key` to `Shift+Enter` so you can run a cell with `Shift+Enter` in the command mode:\n\n    ```\n    { \"keys\": [\"shift+enter\"], \"command\": \"set_motion\", \"args\": {\n        \"motion\": \"move\",\n        \"motion_args\": {\"by\": \"lines\", \"forward\": true, \"extend\": true }},\n        \"context\": [\n            { \"key\": \"setting.command_mode\"},\n            { \"key\": \"setting.ipython_notebook\", \"operator\": \"equal\", \"operand\": false },\n            ]\n    },\n    ```\n2. Command mode Up/Down navigation keys:\n\n    ```\n    { \"keys\": [\"j\"], \"command\": \"set_motion\", \"args\": {\n        \"motion\": \"move\",\n        \"motion_args\": {\"by\": \"lines\", \"forward\": true, \"extend\": true },\n        \"linewise\": true },\n        \"context\": [\n            { \"key\": \"setting.command_mode\"},\n            { \"key\": \"setting.ipython_notebook\", \"operator\": \"equal\", \"operand\": false },\n            ]\n    },\n    \n    {\n        \"keys\": [\"j\"], \"command\": \"inb_move_up\",\n        \"context\" : [\n            { \"key\": \"setting.command_mode\"}\n            { \"key\": \"setting.ipython_notebook\", \"operator\": \"equal\", \"operand\": true },\n            { \"key\": \"auto_complete_visible\", \"operator\": \"equal\", \"operand\": false },\n            ]\n    },\n    \n    { \"keys\": [\"k\"], \"command\": \"set_motion\", \"args\": {\n        \"motion\": \"move\",\n        \"motion_args\": {\"by\": \"lines\", \"forward\": false, \"extend\": true },\n        \"linewise\": true },\n        \"context\": [\n            { \"key\": \"setting.command_mode\"},\n            { \"key\": \"setting.ipython_notebook\", \"operator\": \"equal\", \"operand\": false },\n            ]\n    },\n    \n    {\n        \"keys\": [\"k\"], \"command\": \"inb_move_down\",\n        \"context\" : [\n            { \"key\": \"setting.command_mode\"},\n            { \"key\": \"setting.ipython_notebook\", \"operator\": \"equal\", \"operand\": true },\n            { \"key\": \"auto_complete_visible\", \"operator\": \"equal\", \"operand\": false },\n            ]\n    },\n    ```\n",
+			"file": "/Users/sidneyfeygin/Library/Application Support/Sublime Text 3/Packages/IPython Notebook/README.md",
+			"file_size": -1,
+			"file_write_time": -1,
+			"settings":
+			{
+				"buffer_size": 3737,
+				"line_ending": "Unix",
+				"read_only": true,
+				"scratch": true
+			}
+		},
+		{
+			"contents": "// Default SublimeIPythonNotebook Preferences file\n//\n// DO NOT EDIT THIS FILE! Copy it to your Packages/User folder and modify that copy.\n//\n\n{\n	//Color scheme for displaying notebooks\n	//Light:\n	\"color_scheme\": \"Packages/IPython Notebook/ipynb_light.hidden-tmTheme\",\n	//Dark:\n	//\"color_scheme\": \"Packages/IPython Notebook/ipynb_dark.hidden-tmTheme\",\n}\n",
+			"file": "/Users/sidneyfeygin/Library/Application Support/Sublime Text 3/Packages/IPython Notebook/SublimeIPythonNotebook.sublime-settings",
+			"file_size": -1,
+			"file_write_time": -1,
+			"settings":
+			{
+				"buffer_size": 354,
+				"line_ending": "Unix",
+				"read_only": true,
+				"scratch": true
+			}
+		},
+		{
+			"contents": "[\n    {\n    	\"keys\": [\"shift+enter\"], \"command\": \"inb_run_in_notebook\", \"args\": {\"inplace\" : false},\n    	\"context\" : [ { \"key\": \"setting.ipython_notebook\", \"operator\": \"equal\", \"operand\": true }]\n    },\n    {\n        \"keys\": [\"ctrl+enter\"], \"command\": \"inb_run_in_notebook\", \"args\": {\"inplace\" : true},\n        \"context\" : [ { \"key\": \"setting.ipython_notebook\", \"operator\": \"equal\", \"operand\": true }]\n    },\n    {\n    	\"keys\": [\"backspace\"], \"command\": \"inb_backspace\",\n		\"context\":\n			[\n			{ \"key\": \"setting.ipython_notebook\", \"operator\": \"equal\", \"operand\": true },\n			{ \"key\": \"selection_empty\", \"operator\": \"equal\", \"operand\": true, \"match_all\": true }\n			]\n	},\n    {\n        \"keys\": [\"super+s\"], \"command\": \"inb_save_notebook\",\n        \"context\" : [ { \"key\": \"setting.ipython_notebook\", \"operator\": \"equal\", \"operand\": true }]\n    },\n    {\n        \"keys\": [\"ctrl+s\"], \"command\": \"inb_save_notebook\",\n        \"context\" : [ { \"key\": \"setting.ipython_notebook\", \"operator\": \"equal\", \"operand\": true }]\n    },\n    {\n        \"keys\": [\"ctrl+m\", \"d\"], \"command\": \"inb_delete_current_cell\",\n        \"context\" : [ { \"key\": \"setting.ipython_notebook\", \"operator\": \"equal\", \"operand\": true }]\n    },\n    {\n        \"keys\": [\"ctrl+m\", \"a\"], \"command\": \"inb_insert_cell_above\",\n        \"context\" : [ { \"key\": \"setting.ipython_notebook\", \"operator\": \"equal\", \"operand\": true }]\n    },\n    {\n        \"keys\": [\"ctrl+m\", \"b\"], \"command\": \"inb_insert_cell_below\",\n        \"context\" : [ { \"key\": \"setting.ipython_notebook\", \"operator\": \"equal\", \"operand\": true }]\n    },\n    {\n        \"keys\": [\"ctrl+m\", \"y\"], \"command\": \"inb_change_cell_type\", \"args\": {\"new_type\" : \"code\"},\n        \"context\" : [ { \"key\": \"setting.ipython_notebook\", \"operator\": \"equal\", \"operand\": true }]\n    },\n    {\n        \"keys\": [\"ctrl+m\", \"m\"], \"command\": \"inb_change_cell_type\", \"args\": {\"new_type\" : \"markdown\"},\n        \"context\" : [ { \"key\": \"setting.ipython_notebook\", \"operator\": \"equal\", \"operand\": true }]\n    },\n    {\n        \"keys\": [\"ctrl+m\", \"t\"], \"command\": \"inb_change_cell_type\", \"args\": {\"new_type\" : \"raw\"},\n        \"context\" : [ { \"key\": \"setting.ipython_notebook\", \"operator\": \"equal\", \"operand\": true }]\n    },\n    {\n        \"keys\": [\"ctrl+m\", \"s\"], \"command\": \"inb_save_notebook\",\n        \"context\" : [ { \"key\": \"setting.ipython_notebook\", \"operator\": \"equal\", \"operand\": true }]\n    },\n    {\n        \"keys\": [\"up\"], \"command\": \"inb_move_up\",\n        \"context\" : [\n            { \"key\": \"setting.ipython_notebook\", \"operator\": \"equal\", \"operand\": true },\n            { \"key\": \"auto_complete_visible\", \"operator\": \"equal\", \"operand\": false }\n            ]\n    },\n    {\n        \"keys\": [\"ctrl+up\"], \"command\": \"inb_move_to_cell\", \"args\": {\"up\" : true},\n        \"context\" : [\n            { \"key\": \"setting.ipython_notebook\", \"operator\": \"equal\", \"operand\": true },\n            { \"key\": \"auto_complete_visible\", \"operator\": \"equal\", \"operand\": false }\n            ]\n    },\n    {\n        \"keys\": [\"ctrl+down\"], \"command\": \"inb_move_to_cell\", \"args\": {\"up\" : false},\n        \"context\" : [\n            { \"key\": \"setting.ipython_notebook\", \"operator\": \"equal\", \"operand\": true },\n            { \"key\": \"auto_complete_visible\", \"operator\": \"equal\", \"operand\": false }\n            ]\n    },\n    {\n        \"keys\": [\"ctrl+m\", \"p\"], \"command\": \"inb_move_to_cell\", \"args\": {\"up\" : true},\n        \"context\" : [\n            { \"key\": \"setting.ipython_notebook\", \"operator\": \"equal\", \"operand\": true },\n            { \"key\": \"auto_complete_visible\", \"operator\": \"equal\", \"operand\": false }\n            ]\n    },\n    {\n        \"keys\": [\"ctrl+m\", \"n\"], \"command\": \"inb_move_to_cell\", \"args\": {\"up\" : false},\n        \"context\" : [\n            { \"key\": \"setting.ipython_notebook\", \"operator\": \"equal\", \"operand\": true },\n            { \"key\": \"auto_complete_visible\", \"operator\": \"equal\", \"operand\": false }\n            ]\n    },\n    {\n        \"keys\": [\"down\"], \"command\": \"inb_move_down\",\n        \"context\" : [\n            { \"key\": \"setting.ipython_notebook\", \"operator\": \"equal\", \"operand\": true },\n            { \"key\": \"auto_complete_visible\", \"operator\": \"equal\", \"operand\": false }\n            ]\n    },\n    {\n        \"keys\": [\"left\"], \"command\": \"inb_move_left\",\n        \"context\" : [\n            { \"key\": \"setting.ipython_notebook\", \"operator\": \"equal\", \"operand\": true },\n            { \"key\": \"auto_complete_visible\", \"operator\": \"equal\", \"operand\": false }\n            ]\n    },\n    {\n        \"keys\": [\"right\"], \"command\": \"inb_move_right\",\n        \"context\" : [\n            { \"key\": \"setting.ipython_notebook\", \"operator\": \"equal\", \"operand\": true },\n            { \"key\": \"auto_complete_visible\", \"operator\": \"equal\", \"operand\": false }\n            ]\n    }\n\n]\n\n",
+			"file": "/Users/sidneyfeygin/Library/Application Support/Sublime Text 3/Packages/IPython Notebook/Default.sublime-keymap",
+			"file_size": -1,
+			"file_write_time": -1,
+			"settings":
+			{
+				"buffer_size": 4724,
+				"line_ending": "Unix",
+				"read_only": true,
+				"scratch": true
+			}
+		},
+		{
+			"file": "untitled.sublime-project",
+			"settings":
+			{
+				"buffer_size": 73,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/sidneyfeygin/Library/Application Support/Sublime Text 3/Packages/SublimePythonIDE/SublimePython.sublime-settings",
+			"settings":
+			{
+				"buffer_size": 1511,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/sidneyfeygin/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+			"settings":
+			{
+				"buffer_size": 463,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "// Place your settings in the file \"User/Preferences.sublime-settings\", which\n// overrides the settings in here.\n//\n// Settings may also be placed in file type specific options files, for\n// example, in Packages/Python/Python.sublime-settings for python files.\n{\n    // Sets the colors used within the text area\n    \"color_scheme\": \"Packages/Color Scheme - Default/Monokai.tmTheme\",\n\n    // Note that the font_face and font_size are overridden in the platform\n    // specific settings file, for example, \"Preferences (Linux).sublime-settings\".\n    // Because of this, setting them here will have no effect: you must set them\n    // in your User File Preferences.\n    \"font_face\": \"\",\n    \"font_size\": 10,\n\n    // Valid options are \"no_bold\", \"no_italic\", \"no_antialias\", \"gray_antialias\",\n    // \"subpixel_antialias\", \"no_round\" (OS X only), \"gdi\" (Windows only) and\n    // \"directwrite\" (Windows only)\n    \"font_options\": [],\n\n    // Characters that are considered to separate words\n    \"word_separators\": \"./\\\\()\\\"'-:,.;<>~!@#$%^&*|+=[]{}`~?\",\n\n    // Set to false to prevent line numbers being drawn in the gutter\n    \"line_numbers\": true,\n\n    // Set to false to hide the gutter altogether\n    \"gutter\": true,\n\n    // Spacing between the gutter and the text\n    \"margin\": 4,\n\n    // Fold buttons are the triangles shown in the gutter to fold regions of text\n    \"fold_buttons\": true,\n\n    // Hides the fold buttons unless the mouse is over the gutter\n    \"fade_fold_buttons\": true,\n\n    // Columns in which to display vertical rulers\n    \"rulers\": [],\n\n    // Set to true to turn spell checking on by default\n    \"spell_check\": false,\n\n    // The number of spaces a tab is considered equal to\n    \"tab_size\": 4,\n\n    // Set to true to insert spaces when tab is pressed\n    \"translate_tabs_to_spaces\": false,\n\n    // If translate_tabs_to_spaces is true, use_tab_stops will make tab and\n    // backspace insert/delete up to the next tabstop\n    \"use_tab_stops\": true,\n\n    // Set to false to disable detection of tabs vs. spaces on load\n    \"detect_indentation\": true,\n\n    // Calculates indentation automatically when pressing enter\n    \"auto_indent\": true,\n\n    // Makes auto indent a little smarter, e.g., by indenting the next line\n    // after an if statement in C. Requires auto_indent to be enabled.\n    \"smart_indent\": true,\n\n    // Adds whitespace up to the first open bracket when indenting. Requires\n    // auto_indent to be enabled.\n    \"indent_to_bracket\": false,\n\n    // Trims white space added by auto_indent when moving the caret off the\n    // line.\n    \"trim_automatic_white_space\": true,\n\n    // Disables horizontal scrolling if enabled.\n    // May be set to true, false, or \"auto\", where it will be disabled for\n    // source code, and otherwise enabled.\n    \"word_wrap\": \"auto\",\n\n    // Set to a value other than 0 to force wrapping at that column rather than the\n    // window width\n    \"wrap_width\": 0,\n\n    // Set to false to prevent word wrapped lines from being indented to the same\n    // level\n    \"indent_subsequent_lines\": true,\n\n    // Draws text centered in the window rather than left aligned\n    \"draw_centered\": false,\n\n    // Controls auto pairing of quotes, brackets etc\n    \"auto_match_enabled\": true,\n\n    // Word list to use for spell checking\n    \"dictionary\": \"Packages/Language - English/en_US.dic\",\n\n    // Set to true to draw a border around the visible rectangle on the minimap.\n    // The color of the border will be determined by the \"minimapBorder\" key in\n    // the color scheme\n    \"draw_minimap_border\": false,\n\n    // Always visualise the viewport on the minimap, as opposed to only\n    // showing it on mouse over\n    \"always_show_minimap_viewport\": false,\n\n    // If enabled, will highlight any line with a caret\n    \"highlight_line\": false,\n\n    // Valid values are \"smooth\", \"phase\", \"blink\" and \"solid\".\n    \"caret_style\": \"smooth\",\n\n    // These settings control the size of the caret\n    \"caret_extra_top\": 0,\n    \"caret_extra_bottom\": 0,\n    \"caret_extra_width\": 0,\n\n    // Set to false to disable underlining the brackets surrounding the caret\n    \"match_brackets\": true,\n\n    // Set to false if you'd rather only highlight the brackets when the caret is\n    // next to one\n    \"match_brackets_content\": true,\n\n    // Set to false to not highlight square brackets. This only takes effect if\n    // match_brackets is true\n    \"match_brackets_square\": true,\n\n    // Set to false to not highlight curly brackets. This only takes effect if\n    // match_brackets is true\n    \"match_brackets_braces\": true,\n\n    // Set to false to not highlight angle brackets. This only takes effect if\n    // match_brackets is true\n    \"match_brackets_angle\": false,\n\n    // Enable visualization of the matching tag in HTML and XML\n    \"match_tags\": true,\n\n    // Highlights other occurrences of the currently selected text\n    \"match_selection\": true,\n\n    // Additional spacing at the top of each line, in pixels\n    \"line_padding_top\": 0,\n\n    // Additional spacing at the bottom of each line, in pixels\n    \"line_padding_bottom\": 0,\n\n    // Set to false to disable scrolling past the end of the buffer.\n    // On OS X, this value is overridden in the platform specific settings, so\n    // you'll need to place this line in your user settings to override it.\n    \"scroll_past_end\": true,\n\n    // This controls what happens when pressing up or down when on the first\n    // or last line.\n    // On OS X, this value is overridden in the platform specific settings, so\n    // you'll need to place this line in your user settings to override it.\n    \"move_to_limit_on_up_down\": false,\n\n    // Set to \"none\" to turn off drawing white space, \"selection\" to draw only the\n    // white space within the selection, and \"all\" to draw all white space\n    \"draw_white_space\": \"selection\",\n\n    // Set to false to turn off the indentation guides.\n    // The color and width of the indent guides may be customized by editing\n    // the corresponding .tmTheme file, and specifying the colors \"guide\",\n    // \"activeGuide\" and \"stackGuide\"\n    \"draw_indent_guides\": true,\n\n    // Controls how the indent guides are drawn, valid options are\n    // \"draw_normal\" and \"draw_active\". draw_active will draw the indent\n    // guides containing the caret in a different color.\n    \"indent_guide_options\": [\"draw_normal\"],\n\n    // Set to true to removing trailing white space on save\n    \"trim_trailing_white_space_on_save\": false,\n\n    // Set to true to ensure the last line of the file ends in a newline\n    // character when saving\n    \"ensure_newline_at_eof_on_save\": false,\n\n    // Set to true to automatically save files when switching to a different file\n    // or application\n    \"save_on_focus_lost\": false,\n\n    // Save via writing to an alternate file, and then renaming it over the\n    // original file.\n    \"atomic_save\": true,\n\n    // The encoding to use when the encoding can't be determined automatically.\n    // ASCII, UTF-8 and UTF-16 encodings will be automatically detected.\n    \"fallback_encoding\": \"Western (Windows 1252)\",\n\n    // Encoding used when saving new files, and files opened with an undefined\n    // encoding (e.g., plain ascii files). If a file is opened with a specific\n    // encoding (either detected or given explicitly), this setting will be\n    // ignored, and the file will be saved with the encoding it was opened\n    // with.\n    \"default_encoding\": \"UTF-8\",\n\n    // Files containing null bytes are opened as hexadecimal by default\n    \"enable_hexadecimal_encoding\": true,\n\n    // Determines what character(s) are used to terminate each line in new files.\n    // Valid values are 'system' (whatever the OS uses), 'windows' (CRLF) and\n    // 'unix' (LF only).\n    \"default_line_ending\": \"system\",\n\n    // When enabled, pressing tab will insert the best matching completion.\n    // When disabled, tab will only trigger snippets or insert a tab.\n    // Shift+tab can be used to insert an explicit tab when tab_completion is\n    // enabled.\n    \"tab_completion\": true,\n\n    // Enable auto complete to be triggered automatically when typing.\n    \"auto_complete\": true,\n\n    // The maximum file size where auto complete will be automatically triggered.\n    \"auto_complete_size_limit\": 4194304,\n\n    // The delay, in ms, before the auto complete window is shown after typing\n    \"auto_complete_delay\": 50,\n\n    // Controls what scopes auto complete will be triggered in\n    \"auto_complete_selector\": \"source - comment, meta.tag - punctuation.definition.tag.begin\",\n\n    // Additional situations to trigger auto complete\n    \"auto_complete_triggers\": [ {\"selector\": \"text.html\", \"characters\": \"<\"} ],\n\n    // By default, auto complete will commit the current completion on enter.\n    // This setting can be used to make it complete on tab instead.\n    // Completing on tab is generally a superior option, as it removes\n    // ambiguity between committing the completion and inserting a newline.\n    \"auto_complete_commit_on_tab\": false,\n\n    // Controls if auto complete is shown when snippet fields are active.\n    // Only relevant if auto_complete_commit_on_tab is true.\n    \"auto_complete_with_fields\": false,\n\n    // Automatically close HTML and XML tags when </ is entered.\n    \"auto_close_tags\": true,\n\n    // By default, shift+tab will only unindent if the selection spans\n    // multiple lines. When pressing shift+tab at other times, it'll insert a\n    // tab character - this allows tabs to be inserted when tab_completion is\n    // enabled. Set this to true to make shift+tab always unindent, instead of\n    // inserting tabs.\n    \"shift_tab_unindent\": false,\n\n    // If true, the copy and cut commands will operate on the current line\n    // when the selection is empty, rather than doing nothing.\n    \"copy_with_empty_selection\": true,\n\n    // If true, the selected text will be copied into the find panel when it's\n    // shown.\n    // On OS X, this value is overridden in the platform specific settings, so\n    // you'll need to place this line in your user settings to override it.\n    \"find_selected_text\": true,\n\n    // When auto_find_in_selection is enabled, the \"Find in Selection\" flag\n    // will be enabled automatically when multiple lines of text are selected\n    \"auto_find_in_selection\": false,\n\n    // When drag_text is enabled, clicking on selected text will begin a\n    // drag-drop operation. This is not currently implemented under Linux.\n    \"drag_text\": true,\n\n    //\n    // User Interface Settings\n    //\n\n    // The theme controls the look of Sublime Text's UI (buttons, tabs, scroll bars, etc)\n    \"theme\": \"Default.sublime-theme\",\n\n    // Set to 0 to disable smooth scrolling. Set to a value between 0 and 1 to\n    // scroll slower, or set to larger than 1 to scroll faster\n    \"scroll_speed\": 1.0,\n\n    // Controls side bar animation when expanding or collapsing folders\n    \"tree_animation_enabled\": true,\n\n    // Controls animation throughout the application\n    \"animation_enabled\": true,\n\n    // Makes tabs with modified files more visible\n    \"highlight_modified_tabs\": false,\n\n    \"show_tab_close_buttons\": true,\n\n    // Show folders in the side bar in bold\n    \"bold_folder_labels\": false,\n\n    // OS X only: Set to true to disable Lion style full screen support.\n    // Sublime Text must be restarted for this to take effect.\n    \"use_simple_full_screen\": false,\n\n    // OS X only. Valid values are true, false, and \"auto\". Auto will enable\n    // the setting when running on a screen 2560 pixels or wider (i.e., a\n    // Retina display). When this setting is enabled, OpenGL is used to\n    // accelerate drawing. Sublime Text must be restarted for changes to take\n    // effect.\n    \"gpu_window_buffer\": \"auto\",\n\n    // Valid values are \"system\", \"enabled\" and \"disabled\"\n    \"overlay_scroll_bars\": \"system\",\n\n    // Allows tabs to scroll left and right, instead of simply shrinking\n    \"enable_tab_scrolling\": true,\n\n    // Display file encoding in the status bar\n    \"show_encoding\": false,\n\n    // Display line endings in the status bar\n    \"show_line_endings\": false,\n\n    //\n    // Application Behavior Settings\n    //\n\n    // Exiting the application with hot_exit enabled will cause it to close\n    // immediately without prompting. Unsaved modifications and open files will\n    // be preserved and restored when next starting.\n    //\n    // Closing a window with an associated project will also close the window\n    // without prompting, preserving unsaved changes in the workspace file\n    // alongside the project.\n    \"hot_exit\": true,\n\n    // remember_open_files makes the application start up with the last set of\n    // open files. Changing this to false will have no effect if hot_exit is\n    // true\n    \"remember_open_files\": true,\n\n    // remember_full_screen will allow Sublime Text to start in full screen\n    // mode if it was exited in full screen mode. When set to false, Sublime\n    // Text will never start in full screen mode.\n    \"remember_full_screen\": false,\n\n    // Always prompt before reloading a file, even if the file hasn't been\n    // modified. The default behavior is to automatically reload a file if it\n    // hasn't been edited. If a file has unsaved changes, a prompt will always\n    // be shown.\n    \"always_prompt_for_file_reload\": false,\n\n    // OS X only: When files are opened from finder, or by dragging onto the\n    // dock icon, this controls if a new window is created or not.\n    \"open_files_in_new_window\": true,\n\n    // OS X only: This controls if an empty window is created at startup or not.\n    \"create_window_at_startup\": true,\n\n    // Set to true to close windows as soon as the last file is closed, unless\n    // there's a folder open within the window. This is always enabled on OS X,\n    // changing it here won't modify the behavior.\n    \"close_windows_when_empty\": false,\n\n    // Show the full path to files in the title bar.\n    // On OS X, this value is overridden in the platform specific settings, so\n    // you'll need to place this line in your user settings to override it.\n    \"show_full_path\": true,\n\n    // Shows the Build Results panel when building. If set to false, the Build\n    // Results can be shown via the Tools/Build Results menu.\n    \"show_panel_on_build\": true,\n\n    // Preview file contents when clicking on a file in the side bar. Double\n    // clicking or editing the preview will open the file and assign it a tab.\n    \"preview_on_click\": true,\n\n    // folder_exclude_patterns and file_exclude_patterns control which files\n    // are listed in folders on the side bar. These can also be set on a per-\n    // project basis.\n    \"folder_exclude_patterns\": [\".svn\", \".git\", \".hg\", \"CVS\"],\n    \"file_exclude_patterns\": [\"*.pyc\", \"*.pyo\", \"*.exe\", \"*.dll\", \"*.obj\",\"*.o\", \"*.a\", \"*.lib\", \"*.so\", \"*.dylib\", \"*.ncb\", \"*.sdf\", \"*.suo\", \"*.pdb\", \"*.idb\", \".DS_Store\", \"*.class\", \"*.psd\", \"*.db\", \"*.sublime-workspace\"],\n    // These files will still show up in the side bar, but won't be included in\n    // Goto Anything or Find in Files\n    \"binary_file_patterns\": [\"*.jpg\", \"*.jpeg\", \"*.png\", \"*.gif\", \"*.ttf\", \"*.tga\", \"*.dds\", \"*.ico\", \"*.eot\", \"*.pdf\", \"*.swf\", \"*.jar\", \"*.zip\"],\n\n    // File indexing parses all files in the side bar, and builds an index of\n    // their symbols. This is required for Goto Definition to work.\n    \"index_files\": true,\n\n    // index_exclude_patterns indicate which files won't be indexed.\n    \"index_exclude_patterns\": [\"*.log\"],\n\n    // When enabled, anonymised usage data is sent back, assisting Sublime HQ\n    // in making informed decisions about improving Sublime Text. File names\n    // and file contents are never included, but data such as computer\n    // specifications, startup time, installed packages, and edited file types\n    // are. When disabled, telemetry is neither recorded or sent.\n    // A setting of auto will enable telemetry in dev builds, and disable\n    // telemetry in regular builds.\n    \"enable_telemetry\": \"auto\",\n\n    // List any packages to ignore here. When removing entries from this list,\n    // a restart may be required if the package contains plugins.\n    \"ignored_packages\": [\"Vintage\"]\n}\n",
+			"file": "/Users/sidneyfeygin/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+			"file_size": -1,
+			"file_write_time": -1,
+			"settings":
+			{
+				"buffer_size": 16152,
+				"line_ending": "Unix",
+				"read_only": true,
+				"scratch": true
+			}
+		}
+	],
+	"build_system": "Packages/Python/Python.sublime-build",
+	"command_palette":
+	{
+		"height": 400.0,
+		"selected_items":
+		[
+			[
+				"open",
+				"Open IPython Notebook"
+			],
+			[
+				"ipyt",
+				"Open IPython Notebook"
+			],
+			[
+				"ipython",
+				"Open IPython Notebook"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"xml",
+				"xml2json"
+			],
+			[
+				"json",
+				"JsonTree: Show Tree"
+			],
+			[
+				"isntal",
+				"Package Control: Install Package"
+			],
+			[
+				"python",
+				"Open IPython Notebook"
+			],
+			[
+				"ipy",
+				"Open IPython Notebook"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"doc",
+				"Package Control: Discover Packages"
+			],
+			[
+				"",
+				"Snippet: java.beans."
+			],
+			[
+				"djan",
+				"Django: Comment"
+			],
+			[
+				"wiki",
+				"Set Syntax: Wiki"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"them",
+				"Themr: Next theme"
+			],
+			[
+				"themr",
+				"Themr: Next theme"
+			],
+			[
+				"upda",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"remo",
+				"Package Control: Remove Package"
+			],
+			[
+				"theme",
+				"Themr: List themes"
+			],
+			[
+				"markdown Pr",
+				"Markdown Preview: Github Flavored Markdown: Preview in Browser"
+			],
+			[
+				"preview",
+				"Markdown Preview: Python Markdown: Preview in Browser"
+			]
+		],
+		"width": 610.0
+	},
+	"console":
+	{
+		"height": 127.0,
+		"history":
+		[
+			"from math.random import *",
+			"from django.db import models",
+			"ipython notebook",
+			"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404' + 'e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/sidneyfeygin/current_code/python/django/web_mapping_mongo/web_mapping_mongo"
+	],
+	"file_history":
+	[
+		"/Users/sidneyfeygin/current_code/python/django/web_mapping_mongo/web_mapping_mongo/urls.py",
+		"/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/os.py",
+		"/Users/sidneyfeygin/Library/Application Support/Sublime Text 3/Packages/Javatar/README.md",
+		"/Users/sidneyfeygin/Library/Application Support/Sublime Text 3/Packages/DashDoc/Default (OSX).sublime-keymap",
+		"/Users/sidneyfeygin/Library/Application Support/Sublime Text 3/Packages/Web Inspector 3/Default (OSX).sublime-keymap",
+		"/Users/sidneyfeygin/Library/Application Support/Sublime Text 3/Packages/User/Default (OSX).sublime-keymap",
+		"/Users/sidneyfeygin/Library/Application Support/Sublime Text 3/Packages/DashDoc/DashDoc.sublime-settings",
+		"/Users/sidneyfeygin/Documents/Grad School/Classes/4_2013_FA/EECS260/getawaycam/prog3/src/edu/berkeley/sidfeygin/cs260/ipa3/utils/MakePhotoActivity.java",
+		"/Users/sidneyfeygin/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/sidneyfeygin/current_code/java/matsim_home/svnroot/trunk/src/test/java/org/matsim/analysis/CalcAverageTripLengthTest.java",
+		"/Users/sidneyfeygin/current_code/java/matsim_home/svnroot/trunk/pom.xml",
+		"/Users/sidneyfeygin/current_code/java/matsim_home/svnroot/trunk/examples/tutorial/programming/example50VeryExperimentalWithinDayReplanning/withinday-config.xml",
+		"/Users/sidneyfeygin/current_code/java/matsim/examples/tutorial/config/example1-config.xml",
+		"/Users/sidneyfeygin/Documents/Grad School/Classes/4_2013_FA/EECS260/getawaycam/prog3/src/edu/berkeley/sidfeygin/cs260/ipa3/utils/CameraPreview.java",
+		"/Users/sidneyfeygin/current_code/android/examples/flatUI/sample/src/main/java/com/cengalabs/flatui/sample/MainActivity.java",
+		"/Users/sidneyfeygin/current_code/android/examples/flatUI/library/src/main/java/com/cengalabs/flatui/views/FlatButton.java",
+		"/Users/sidneyfeygin/current_code/android/examples/flatUI/library/src/main/java/com/cengalabs/flatui/Attributes.java",
+		"/Users/sidneyfeygin/current_code/android/examples/flatUI/library/src/main/java/com/cengalabs/flatui/FlatUI.java",
+		"/Users/sidneyfeygin/current_code/android/examples/flatUI/library/src/main/res/values/attrs.xml",
+		"/Users/sidneyfeygin/current_code/android/examples/flatUI/library/src/main/res/values/strings.xml",
+		"/Users/sidneyfeygin/current_code/android/examples/flatUI/library/src/main/res/values/colors.xml",
+		"/Users/sidneyfeygin/current_code/android/examples/android-bootstrap/app/src/main/java/com/client/android/atg/mydrivingpal1/ui/MainActivity.java",
+		"/Users/sidneyfeygin/current_code/android/examples/android-bootstrap/app/src/main/java/com/client/android/atg/mydrivingpal1/ui/HeaderFooterListAdapter.java",
+		"/Users/sidneyfeygin/current_code/android/examples/android-bootstrap/app/src/main/java/com/client/android/atg/mydrivingpal1/events/RestAdapterErrorEvent.java",
+		"/Users/sidneyfeygin/current_code/android/examples/android-bootstrap/app/src/main/java/com/client/android/atg/mydrivingpal1/events/NavItemSelectedEvent.java",
+		"/Users/sidneyfeygin/current_code/android/examples/ODK-Time-master/src/org/odk/collect/android/activities/SplashScreenActivity.java",
+		"/Users/sidneyfeygin/Desktop/Desktop Organizer/samples/android-18/ui/actionbar/DoneBar/DoneBar/src/main/java/com/example/android/donebar/DoneBarActivity.java",
+		"/Users/sidneyfeygin/sandbox/XLabBLSClient/src/edu/berkeley/xlab/LoginActivity.java",
+		"/Users/sidneyfeygin/Library/Containers/com.apple.mail/Data/Library/Mail Downloads/42F9CB31-DB0B-49D1-A469-FC1FD068845B/Data/SMSContentReader.json",
+		"/Users/sidneyfeygin/sandbox/EECS249Sandbox/BearLoc/BearLoc/bearloc/mobile/src/edu/berkeley/bearloc/util/SamplerSettings.java",
+		"/Users/sidneyfeygin/Downloads/eb-node-express-signup-master/app_config.json",
+		"/Users/sidneyfeygin/Desktop/Desktop Organizer/samples/android-18/legacy/ApiDemos/src/com/example/android/apis/app/LoaderThrottle.java",
+		"/Users/sidneyfeygin/Desktop/Desktop Organizer/samples/android-18/legacy/ApiDemos/src/com/example/android/apis/app/LoaderRetained.java",
+		"/Users/sidneyfeygin/Desktop/Desktop Organizer/samples/android-18/legacy/ApiDemos/src/com/example/android/apis/app/LoaderCustom.java",
+		"/Users/sidneyfeygin/current_code/android-reminder-lib-master/Example/src/main/java/org/ohmage/reminders/example/ReminderExampleApplication.java",
+		"/Users/sidneyfeygin/current_code/android-reminder-lib-master/reminder-lib/build.gradle",
+		"/Users/sidneyfeygin/current_code/android-reminder-lib-master/build.gradle",
+		"/Users/sidneyfeygin/current_code/greenDAO-master/DaoExampleGenerator/src/de/greenrobot/daogenerator/gentest/ExampleDaoGenerator.java",
+		"/Users/sidneyfeygin/Downloads/Scheduler 2/src/com/example/android/scheduler/SampleAlarmReceiver.java",
+		"/Users/sidneyfeygin/current_code/ODK-Time-master/src/org/odk/collect/android/triggers/Utils.java",
+		"/Users/sidneyfeygin/current_code/ODK-Time-master/src/org/odk/collect/android/triggers/TimeZoneChange.java",
+		"/Users/sidneyfeygin/current_code/ODK-Time-master/src/org/odk/collect/android/triggers/SetTimeTriggerService.java",
+		"/Users/sidneyfeygin/current_code/ODK-Time-master/src/org/odk/collect/android/triggers/SetTimeTrigger.java",
+		"/Users/sidneyfeygin/current_code/android-reminder-lib-master/reminder-lib/src/main/java/org/ohmage/reminders/utils/SimpleTime.java",
+		"/Users/sidneyfeygin/current_code/android-reminder-lib-master/settings.gradle",
+		"/Users/sidneyfeygin/current_code/android-reminder-lib-master/gradle.properties",
+		"/Users/sidneyfeygin/current_code/android-reminder-lib-master/Example/build.gradle",
+		"/Users/sidneyfeygin/current_code/Purple-Robot-Manager-master/Purple Robot Manager/assets/scheme/purple-robot.scm",
+		"/Users/sidneyfeygin/current_code/Purple-Robot-Manager-master/Purple Robot Manager/assets/scheme/json.scm",
+		"/Users/sidneyfeygin/current_code/ble_eda/clean/figures/daily_agg_individuals/derivations.tex",
+		"/Users/sidneyfeygin/Desktop/Desktop Organizer/samples/android-18/legacy/ApiDemos/src/com/example/android/apis/app/MessengerService.java",
+		"/Users/sidneyfeygin/current_code/Purple-Robot-Manager-master/Purple Robot Manager/src/edu/northwestern/cbits/purple_robot_manager/ScheduleManager.java",
+		"/Users/sidneyfeygin/current_code/Purple-Robot-Manager-master/Purple Robot Manager/src/edu/northwestern/cbits/purple_robot_manager/ManagerService.java",
+		"/Users/sidneyfeygin/current_code/Purple-Robot-Manager-master/Purple Robot Manager/src/edu/northwestern/cbits/purple_robot_manager/triggers/DateTrigger.java",
+		"/Users/sidneyfeygin/current_code/Purple-Robot-Manager-master/Purple Robot Manager/src/edu/northwestern/cbits/purple_robot_manager/plugins/DataUploadPlugin.java",
+		"/Users/sidneyfeygin/Downloads/threadsample 2/src/com/example/android/threadsample/PhotoManager.java",
+		"/Users/sidneyfeygin/Downloads/Scheduler 2/src/com/example/android/scheduler/SampleSchedulingService.java",
+		"/Users/sidneyfeygin/current_code/Purple-Robot-Manager-master/Purple Robot Manager/src/edu/northwestern/cbits/purple_robot_manager/activities/SettingsActivity.java",
+		"/Users/sidneyfeygin/anaconda/lib/python2.7/site-packages/bokeh/server/static/js/vendor/text/text.js",
+		"/Users/sidneyfeygin/Documents/dev/play-2.2.1/framework/src/play/src/main/resources/public/javascripts/require.js",
+		"/Users/sidneyfeygin/current_code/ble_eda/ble_html/static/data.json",
+		"/Users/sidneyfeygin/current_code/ambient_dynamix/src/org/ambientdynamix/core/WebListener.java",
+		"/Users/sidneyfeygin/current_code/ambient_dynamix/src/org/ambientdynamix/util/Log.java",
+		"/Users/sidneyfeygin/current_code/ambient_dynamix/src/org/ambientdynamix/util/HTTPServer.java",
+		"/Users/sidneyfeygin/current_code/ambient_dynamix/src/org/ambientdynamix/web/WebUtils.java",
+		"/Users/sidneyfeygin/current_code/ambient_dynamix/src/org/ambientdynamix/web/NanoHTTPD.java",
+		"/Users/sidneyfeygin/current_code/ambient_dynamix/src/org/ambientdynamix/web/RESTHandler.java",
+		"/Users/sidneyfeygin/current_code/ambient_dynamix/src/org/ambientdynamix/core/OSGIManager.java",
+		"/Users/sidneyfeygin/current_code/trip-chain-android-master/client/src/fi/aalto/tripchain/BackgroundService.java",
+		"/Users/sidneyfeygin/current_code/trip-chain-android-master/client/src/fi/aalto/tripchain/receivers/Receiver.java",
+		"/Users/sidneyfeygin/current_code/trip-chain-android-master/client/src/fi/aalto/tripchain/receivers/EventListener.java",
+		"/Users/sidneyfeygin/current_code/trip-chain-android-master/client/src/fi/aalto/tripchain/receivers/EventDispatcher.java",
+		"/Users/sidneyfeygin/current_code/Android-ReactiveLocation-master/android-reactive-location/src/main/java/pl/charmas/android/reactivelocation/observables/location/LastKnownLocationObservable.java",
+		"/Users/sidneyfeygin/current_code/Android-ReactiveLocation-master/android-reactive-location/src/main/java/pl/charmas/android/reactivelocation/observables/location/LocationUpdatesObservable.java",
+		"/Users/sidneyfeygin/current_code/Android-ReactiveLocation-master/android-reactive-location/src/main/java/pl/charmas/android/reactivelocation/observables/LocationConnectionException.java",
+		"/Users/sidneyfeygin/current_code/Android-ReactiveLocation-master/android-reactive-location/src/main/java/pl/charmas/android/reactivelocation/observables/BaseLocationObservable.java",
+		"/Users/sidneyfeygin/current_code/Android-ReactiveLocation-master/android-reactive-location/src/main/java/pl/charmas/android/reactivelocation/ReactiveLocationProvider.java",
+		"/Users/sidneyfeygin/current_code/Purple-Robot-Manager-master/Purple Robot Manager/src/edu/northwestern/cbits/purple_robot_manager/triggers/package-info.java",
+		"/Users/sidneyfeygin/current_code/Purple-Robot-Manager-master/Purple Robot Manager/src/edu/northwestern/cbits/purple_robot_manager/http/LocalHttpServer.java",
+		"/Users/sidneyfeygin/current_code/Purple-Robot-Manager-master/Purple Robot Manager/src/edu/northwestern/cbits/purple_robot_manager/http/JsonScriptRequestHandler.java",
+		"/Users/sidneyfeygin/current_code/Purple-Robot-Manager-master/Purple Robot Manager/src/edu/northwestern/cbits/purple_robot_manager/http/commands/PingCommand.java",
+		"/Users/sidneyfeygin/current_code/Purple-Robot-Manager-master/Purple Robot Manager/src/edu/northwestern/cbits/purple_robot_manager/http/commands/JSONCommand.java",
+		"/Users/sidneyfeygin/current_code/Purple-Robot-Manager-master/Purple Robot Manager/src/edu/northwestern/cbits/purple_robot_manager/http/commands/ExecuteJavaScriptCommand.java",
+		"/Users/sidneyfeygin/current_code/Purple-Robot-Manager-master/Purple Robot Manager/src/edu/northwestern/cbits/purple_robot_manager/activities/WebActivity.java",
+		"/Users/sidneyfeygin/current_code/Purple-Robot-Manager-master/Purple Robot Manager/src/edu/northwestern/cbits/purple_robot_manager/charts/Chart.java",
+		"/Users/sidneyfeygin/current_code/Purple-Robot-Manager-master/Purple Robot Manager/src/edu/northwestern/cbits/purple_robot_manager/activities/StartActivity.java",
+		"/Users/sidneyfeygin/current_code/Purple-Robot-Manager-master/Purple Robot Manager/src/edu/northwestern/cbits/purple_robot_manager/activities/WebkitActivity.java",
+		"/Users/sidneyfeygin/current_code/Purple-Robot-Manager-master/Purple Robot Manager/src/edu/northwestern/cbits/purple_robot_manager/activities/CodeViewerActivity.java",
+		"/Users/sidneyfeygin/current_code/Purple-Robot-Manager-master/Purple Robot Manager/src/edu/northwestern/cbits/purple_robot_manager/logging/SanityManager.java",
+		"/Users/sidneyfeygin/current_code/Purple-Robot-Manager-master/Purple Robot Manager/src/edu/northwestern/cbits/purple_robot_manager/logging/SanityCheck.java",
+		"/Users/sidneyfeygin/current_code/Purple-Robot-Manager-master/Purple Robot Manager/src/edu/northwestern/cbits/purple_robot_manager/probes/Probe.java",
+		"/Users/sidneyfeygin/current_code/Purple-Robot-Manager-master/Purple Robot Manager/src/edu/northwestern/cbits/purple_robot_manager/scripting/JavaScriptEngine.java",
+		"/Users/sidneyfeygin/current_code/Purple-Robot-Manager-master/Purple Robot Manager/src/edu/northwestern/cbits/purple_robot_manager/ShutdownReceiver.java",
+		"/Users/sidneyfeygin/current_code/Purple-Robot-Manager-master/Purple Robot Manager/src/edu/northwestern/cbits/purple_robot_manager/util/sexp/SExpression.java",
+		"/Users/sidneyfeygin/current_code/Purple-Robot-Manager-master/Purple Robot Manager/src/edu/northwestern/cbits/purple_robot_manager/util/sexp/Value.java",
+		"/Users/sidneyfeygin/current_code/Purple-Robot-Manager-master/Purple Robot Manager/src/edu/northwestern/cbits/purple_robot_manager/db/filters/FrequencyThrottleFilter.java",
+		"/Users/sidneyfeygin/current_code/Purple-Robot-Manager-master/Purple Robot Manager/src/edu/northwestern/cbits/purple_robot_manager/models/TrainedModel.java",
+		"/Users/sidneyfeygin/current_code/Purple-Robot-Manager-master/Purple Robot Manager/src/edu/northwestern/cbits/purple_robot_manager/models/TreeModel.java",
+		"/Users/sidneyfeygin/current_code/Purple-Robot-Manager-master/Purple Robot Manager/src/edu/northwestern/cbits/purple_robot_manager/plugins/DiagnosticAppDisplayPlugin.java",
+		"/Users/sidneyfeygin/current_code/Purple-Robot-Manager-master/Purple Robot Manager/src/edu/northwestern/cbits/purple_robot_manager/probes/builtin/CallStateProbe.java",
+		"/Users/sidneyfeygin/current_code/Purple-Robot-Manager-master/Purple Robot Manager/src/edu/northwestern/cbits/purple_robot_manager/probes/builtin/TwitterProbe.java",
+		"/Users/sidneyfeygin/current_code/Purple-Robot-Manager-master/Purple Robot Manager/src/edu/northwestern/cbits/purple_robot_manager/probes/builtin/CommunicationEventProbe.java",
+		"/Users/sidneyfeygin/current_code/Purple-Robot-Manager-master/Purple Robot Manager/src/edu/northwestern/cbits/purple_robot_manager/probes/builtin/CommunicationLogProbe.java",
+		"/Users/sidneyfeygin/current_code/Purple-Robot-Manager-master/Purple Robot Manager/src/edu/northwestern/cbits/purple_robot_manager/probes/builtin/FoursquareProbe.java",
+		"/Users/sidneyfeygin/current_code/Purple-Robot-Manager-master/Purple Robot Manager/src/edu/northwestern/cbits/purple_robot_manager/util/DBSCAN.java",
+		"/Users/sidneyfeygin/current_code/Purple-Robot-Manager-master/Purple Robot Manager/src/edu/northwestern/cbits/purple_robot_manager/scripting/BaseScriptEngine.java",
+		"/Users/sidneyfeygin/current_code/Purple-Robot-Manager-master/Purple Robot Manager/src/edu/northwestern/cbits/purple_robot_manager/scripting/SchemeEngine.java",
+		"/Users/sidneyfeygin/current_code/Purple-Robot-Manager-master/Purple Robot Manager/src/edu/northwestern/cbits/purple_robot_manager/triggers/ProbeTrigger.java",
+		"/Users/sidneyfeygin/current_code/pto/proj/schedule.json",
+		"/Users/sidneyfeygin/current_code/Purple-Robot-Manager-master/Purple Robot Manager/src/edu/northwestern/cbits/purple_robot_manager/db/DistancesProvider.java",
+		"/Users/sidneyfeygin/current_code/pto/proj/x.js",
+		"/Users/sidneyfeygin/current_code/ble_eda/call_log.json",
+		"/private/var/folders/jn/q7j6_zb10rs4f4wtsj0g3d_c0000gn/T/871bdd78-06dd-412a-ab37-295aca178aa9/opt/django-trunk/parking_system/dummyAPIs/views.py",
+		"/Users/sidneyfeygin/Downloads/7804187.json",
+		"/Users/sidneyfeygin/Documents/Grad School/Scholarship/Presentations/xlm.xml",
+		"/Users/sidneyfeygin/Library/Containers/com.apple.mail/Data/Library/Mail Downloads/A43411DA-F3EC-4AAB-A83B-06521BAFF888/map.js",
+		"/Users/sidneyfeygin/Downloads/sqlite exporting.java",
+		"/Users/sidneyfeygin/current_code/bpltool-1.0-4722/install-sh",
+		"/private/var/folders/jn/q7j6_zb10rs4f4wtsj0g3d_c0000gn/T/45e8eda5-a756-4c93-8631-d6a8a67bcc8e/opt/django-trunk/parking_system/media/file/XLM_2.xml",
+		"/private/var/folders/jn/q7j6_zb10rs4f4wtsj0g3d_c0000gn/T/45e8eda5-a756-4c93-8631-d6a8a67bcc8e/opt/django-trunk/parking_system/media/file/XLM_5.xml",
+		"/private/var/folders/jn/q7j6_zb10rs4f4wtsj0g3d_c0000gn/T/45e8eda5-a756-4c93-8631-d6a8a67bcc8e/opt/django-trunk/parking_system/media/opt/django-trunk/parking_system/static/file/XLM_2.xml",
+		"/private/var/folders/jn/q7j6_zb10rs4f4wtsj0g3d_c0000gn/T/45e8eda5-a756-4c93-8631-d6a8a67bcc8e/opt/django-trunk/parking_system/media/file/XLM_1.xml",
+		"/private/var/folders/jn/q7j6_zb10rs4f4wtsj0g3d_c0000gn/T/45e8eda5-a756-4c93-8631-d6a8a67bcc8e/opt/django-trunk/parking_system/media/opt/django-trunk/parking_system/static/file/XLM_1.xml",
+		"/private/var/folders/jn/q7j6_zb10rs4f4wtsj0g3d_c0000gn/T/45e8eda5-a756-4c93-8631-d6a8a67bcc8e/opt/django-trunk/parking_system/media/file/XLM_7.xml",
+		"/private/var/folders/jn/q7j6_zb10rs4f4wtsj0g3d_c0000gn/T/45e8eda5-a756-4c93-8631-d6a8a67bcc8e/opt/django-trunk/parking_system/media/opt/django-trunk/parking_system/static/file/XLM_3.xml",
+		"/private/var/folders/jn/q7j6_zb10rs4f4wtsj0g3d_c0000gn/T/45e8eda5-a756-4c93-8631-d6a8a67bcc8e/opt/django-trunk/parking_system/media/opt/django-trunk/parking_system/static/file/XLM_36.xml",
+		"/private/var/folders/jn/q7j6_zb10rs4f4wtsj0g3d_c0000gn/T/45e8eda5-a756-4c93-8631-d6a8a67bcc8e/opt/django-trunk/parking_system/media/opt/django-trunk/parking_system/static/file/XLM_8.xml",
+		"/private/var/folders/jn/q7j6_zb10rs4f4wtsj0g3d_c0000gn/T/45e8eda5-a756-4c93-8631-d6a8a67bcc8e/opt/django-trunk/parking_system/media/opt/django-trunk/parking_system/static/file/XLM.xml"
+	],
+	"find":
+	{
+		"height": 38.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"selectB",
+			"TABLE_TRI",
+			"open",
+			"DateTrigger",
+			"month"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "settings.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7771,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1148,
+								1148
+							]
+						],
+						"settings":
+						{
+							"codeintel": true,
+							"codeintel_config":
+							{
+								"JavaScript":
+								{
+									"codeintel_max_recursive_dir_depth": 2,
+									"codeintel_scan_files_in_project": false,
+									"javascriptExtraPaths":
+									[
+									]
+								},
+								"PHP":
+								{
+									"codeintel_max_recursive_dir_depth": 5,
+									"codeintel_scan_files_in_project": false,
+									"phpExtraPaths":
+									[
+									]
+								},
+								"Python":
+								{
+									"env":
+									{
+									}
+								}
+							},
+							"codeintel_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_live": true,
+							"codeintel_live_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_max_recursive_dir_depth": 10,
+							"codeintel_scan_exclude_dir":
+							{
+								"JavaScript":
+								[
+									"/build/",
+									"/min/"
+								]
+							},
+							"codeintel_scan_files_in_project": true,
+							"codeintel_selected_catalogs":
+							[
+								"PyWin32",
+								"jQuery",
+								"Rails"
+							],
+							"codeintel_snippets": true,
+							"codeintel_syntax_map":
+							{
+								"Python Django": "Python"
+							},
+							"codeintel_tooltips": "popup",
+							"sublime_auto_complete": true,
+							"syntax": "Packages/IPython Notebook/Python2.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 303.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/Users/sidneyfeygin/Library/Application Support/Sublime Text 3/Packages/IPython Notebook/README.md",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3737,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1500,
+								1641
+							]
+						],
+						"settings":
+						{
+							"codeintel": true,
+							"codeintel_config":
+							{
+								"JavaScript":
+								{
+									"codeintel_max_recursive_dir_depth": 2,
+									"codeintel_scan_files_in_project": false,
+									"javascriptExtraPaths":
+									[
+									]
+								},
+								"PHP":
+								{
+									"codeintel_max_recursive_dir_depth": 5,
+									"codeintel_scan_files_in_project": false,
+									"phpExtraPaths":
+									[
+									]
+								},
+								"Python":
+								{
+									"env":
+									{
+									}
+								}
+							},
+							"codeintel_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_live": true,
+							"codeintel_live_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_max_recursive_dir_depth": 10,
+							"codeintel_scan_exclude_dir":
+							{
+								"JavaScript":
+								[
+									"/build/",
+									"/min/"
+								]
+							},
+							"codeintel_scan_files_in_project": true,
+							"codeintel_selected_catalogs":
+							[
+								"PyWin32",
+								"jQuery",
+								"Rails"
+							],
+							"codeintel_snippets": true,
+							"codeintel_syntax_map":
+							{
+								"Python Django": "Python"
+							},
+							"codeintel_tooltips": "popup",
+							"sublime_auto_complete": true,
+							"syntax": "Packages/Markdown/Markdown.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 681.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/Users/sidneyfeygin/Library/Application Support/Sublime Text 3/Packages/IPython Notebook/SublimeIPythonNotebook.sublime-settings",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 354,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								354,
+								354
+							]
+						],
+						"settings":
+						{
+							"codeintel": true,
+							"codeintel_config":
+							{
+								"JavaScript":
+								{
+									"codeintel_max_recursive_dir_depth": 2,
+									"codeintel_scan_files_in_project": false,
+									"javascriptExtraPaths":
+									[
+									]
+								},
+								"PHP":
+								{
+									"codeintel_max_recursive_dir_depth": 5,
+									"codeintel_scan_files_in_project": false,
+									"phpExtraPaths":
+									[
+									]
+								},
+								"Python":
+								{
+									"env":
+									{
+									}
+								}
+							},
+							"codeintel_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_live": true,
+							"codeintel_live_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_max_recursive_dir_depth": 10,
+							"codeintel_scan_exclude_dir":
+							{
+								"JavaScript":
+								[
+									"/build/",
+									"/min/"
+								]
+							},
+							"codeintel_scan_files_in_project": true,
+							"codeintel_selected_catalogs":
+							[
+								"PyWin32",
+								"jQuery",
+								"Rails"
+							],
+							"codeintel_snippets": true,
+							"codeintel_syntax_map":
+							{
+								"Python Django": "Python"
+							},
+							"codeintel_tooltips": "popup",
+							"sublime_auto_complete": true,
+							"syntax": "Packages/JavaScript/JSON.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/Users/sidneyfeygin/Library/Application Support/Sublime Text 3/Packages/IPython Notebook/Default.sublime-keymap",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4724,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4724,
+								4724
+							]
+						],
+						"settings":
+						{
+							"codeintel": true,
+							"codeintel_config":
+							{
+								"JavaScript":
+								{
+									"codeintel_max_recursive_dir_depth": 2,
+									"codeintel_scan_files_in_project": false,
+									"javascriptExtraPaths":
+									[
+									]
+								},
+								"PHP":
+								{
+									"codeintel_max_recursive_dir_depth": 5,
+									"codeintel_scan_files_in_project": false,
+									"phpExtraPaths":
+									[
+									]
+								},
+								"Python":
+								{
+									"env":
+									{
+									}
+								}
+							},
+							"codeintel_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_live": true,
+							"codeintel_live_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_max_recursive_dir_depth": 10,
+							"codeintel_scan_exclude_dir":
+							{
+								"JavaScript":
+								[
+									"/build/",
+									"/min/"
+								]
+							},
+							"codeintel_scan_files_in_project": true,
+							"codeintel_selected_catalogs":
+							[
+								"PyWin32",
+								"jQuery",
+								"Rails"
+							],
+							"codeintel_snippets": true,
+							"codeintel_syntax_map":
+							{
+								"Python Django": "Python"
+							},
+							"codeintel_tooltips": "popup",
+							"sublime_auto_complete": true,
+							"syntax": "Packages/JavaScript/JSON.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "untitled.sublime-project",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 73,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								19,
+								19
+							]
+						],
+						"settings":
+						{
+							"codeintel": true,
+							"codeintel_config":
+							{
+								"JavaScript":
+								{
+									"codeintel_max_recursive_dir_depth": 2,
+									"codeintel_scan_files_in_project": false,
+									"javascriptExtraPaths":
+									[
+									]
+								},
+								"PHP":
+								{
+									"codeintel_max_recursive_dir_depth": 5,
+									"codeintel_scan_files_in_project": false,
+									"phpExtraPaths":
+									[
+									]
+								},
+								"Python":
+								{
+									"env":
+									{
+									}
+								}
+							},
+							"codeintel_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_live": true,
+							"codeintel_live_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_max_recursive_dir_depth": 10,
+							"codeintel_scan_exclude_dir":
+							{
+								"JavaScript":
+								[
+									"/build/",
+									"/min/"
+								]
+							},
+							"codeintel_scan_files_in_project": true,
+							"codeintel_selected_catalogs":
+							[
+								"PyWin32",
+								"jQuery",
+								"Rails"
+							],
+							"codeintel_snippets": true,
+							"codeintel_syntax_map":
+							{
+								"Python Django": "Python"
+							},
+							"codeintel_tooltips": "popup",
+							"sublime_auto_complete": true,
+							"syntax": "Packages/JavaScript/JSON.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "/Users/sidneyfeygin/Library/Application Support/Sublime Text 3/Packages/SublimePythonIDE/SublimePython.sublime-settings",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1511,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								352,
+								358
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "/Users/sidneyfeygin/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 463,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								404,
+								404
+							]
+						],
+						"settings":
+						{
+							"codeintel": true,
+							"codeintel_config":
+							{
+								"JavaScript":
+								{
+									"codeintel_max_recursive_dir_depth": 2,
+									"codeintel_scan_files_in_project": false,
+									"javascriptExtraPaths":
+									[
+									]
+								},
+								"PHP":
+								{
+									"codeintel_max_recursive_dir_depth": 5,
+									"codeintel_scan_files_in_project": false,
+									"phpExtraPaths":
+									[
+									]
+								},
+								"Python":
+								{
+									"env":
+									{
+									}
+								}
+							},
+							"codeintel_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_live": true,
+							"codeintel_live_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_max_recursive_dir_depth": 10,
+							"codeintel_scan_exclude_dir":
+							{
+								"JavaScript":
+								[
+									"/build/",
+									"/min/"
+								]
+							},
+							"codeintel_scan_files_in_project": true,
+							"codeintel_selected_catalogs":
+							[
+								"PyWin32",
+								"jQuery",
+								"Rails"
+							],
+							"codeintel_snippets": true,
+							"codeintel_syntax_map":
+							{
+								"Python Django": "Python"
+							},
+							"codeintel_tooltips": "popup",
+							"sublime_auto_complete": true,
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "/Users/sidneyfeygin/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 16152,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								903,
+								927
+							]
+						],
+						"settings":
+						{
+							"codeintel": true,
+							"codeintel_config":
+							{
+								"JavaScript":
+								{
+									"codeintel_max_recursive_dir_depth": 2,
+									"codeintel_scan_files_in_project": false,
+									"javascriptExtraPaths":
+									[
+									]
+								},
+								"PHP":
+								{
+									"codeintel_max_recursive_dir_depth": 5,
+									"codeintel_scan_files_in_project": false,
+									"phpExtraPaths":
+									[
+									]
+								},
+								"Python":
+								{
+									"env":
+									{
+									}
+								}
+							},
+							"codeintel_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_live": true,
+							"codeintel_live_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_max_recursive_dir_depth": 10,
+							"codeintel_scan_exclude_dir":
+							{
+								"JavaScript":
+								[
+									"/build/",
+									"/min/"
+								]
+							},
+							"codeintel_scan_files_in_project": true,
+							"codeintel_selected_catalogs":
+							[
+								"PyWin32",
+								"jQuery",
+								"Rails"
+							],
+							"codeintel_snippets": true,
+							"codeintel_syntax_map":
+							{
+								"Python Django": "Python"
+							},
+							"codeintel_tooltips": "popup",
+							"sublime_auto_complete": true,
+							"syntax": "Packages/JavaScript/JSON.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 38.0
+	},
+	"input":
+	{
+		"height": 35.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 98.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.vagrant":
+	{
+		"height": 0.0
+	},
+	"project": "untitled.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

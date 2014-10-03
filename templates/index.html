@@ -1,0 +1,240 @@
+<html>
+<head>
+    {% load static %}
+    {% load leaflet_tags %}
+    <script src="/static/jquery/jquery.js"></script>
+    <script src="/static/bootstrap/bootstrap.js"></script>
+
+    {% leaflet_js %}
+    {% leaflet_css %}
+    <style>
+        body {
+
+        }
+
+        h1, h1 a, h1 a:hover {
+            color: #FFF;
+            font-family: Arial;
+            margin: 10px;
+        }
+
+        article h1, article h1 a, article h1 a:hover, h2, h3, h4, h5, h6 {
+            line-height: 1.1em;
+            color: #444;
+            font-family: 'PT Sans Narrow', Calibri, 'Myriad Pro', Tahoma, Arial;
+            padding: 10px 0;
+            margin: 0;
+        }
+
+        article h1, article h1 a, h2 {
+            font-size: 30px;
+            letter-spacing: -1px;
+        }
+
+        h3 {
+            font-size: 30px;
+        }
+
+        h4 {
+            font-size: 22px;
+            font-weight: normal;
+            padding-bottom: 10px;
+        }
+
+        h5 {
+            font-size: 14px;
+        }
+
+        h6 {
+        }
+
+        .leaflet-container {
+            height: 100%;
+        }
+
+        .box h3 {
+            text-align: center;
+            position: relative;
+            top: 80px;
+        }
+
+        .box {
+            width: 80%;
+            height: 600px;
+            margin: 40px auto;
+        }
+
+        .box_shadow {
+            position: relative;
+            -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+            -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+        }
+
+        .box_shadow:before, .box_shadow:after {
+
+            content: "";
+            position: absolute;
+            z-index: -1;
+            -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+            -moz-box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+            top: 0;
+            bottom: 0;
+            left: 10px;
+            right: 10px;
+            -moz-border-radius: 100px / 10px;
+            border-radius: 100px / 10px;
+        }
+
+        .box_shadow:after {
+            right: 10px;
+            left: auto;
+            -webkit-transform: skew(8deg) rotate(3deg);
+            -moz-transform: skew(8deg) rotate(3deg);
+            -ms-transform: skew(8deg) rotate(3deg);
+            -o-transform: skew(8deg) rotate(3deg);
+            transform: skew(8deg) rotate(3deg);
+        }
+
+        ul.dropdown-menu {
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+    </style>
+
+    <title class="navbar-brand pull-left">DIL Global Project Map</title>
+    <link rel="stylesheet" href="/static/bootstrap/bootstrap.css"/>
+    <link rel="stylesheet" href="/static/bootstrap/bootstrap-theme.css"/>
+    <link rel="stylesheet" href="/static/map/css/custom.css"/>
+</head>
+<body style="margin:0; padding:0;">
+<header class="navbar navbar-inverse navbar-static-top bs-docs-nav" role="banner">
+    <div class="container">
+        <div class="navbar-header">
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+                <span class="sr-only">DIL Global Participant Map</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="#" class="navbar-brand pull-left">DIL Global Project Map</a>
+        </div>
+        <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+            <ul class="nav navbar-nav">
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<div class="page-header">
+    <h1 id="title">Development Impact Lab
+        <small>Global Research Community</small>
+    </h1>
+</div>
+<div class="box box_shadow">
+
+    <div class="paper">{% leaflet_map "main" callback="main_map_init" %}</div>
+    <script>
+        $(document).ready(function () {
+            var dsl_map = (function () {
+                var dataurl = '{% url "data" %}';
+                var $map;
+                var $j_name;
+                var markerMap = {}; //a global variable unless you extend L.GeoJSON
+                var $keys = {};
+                main_map_init = function (map, options) {
+
+                    $map = map;
+                    var geojsonMarkerOptions = {
+                        radius: 8,
+                        fillColor: "#FF6788",
+                        color: "YELLOW",
+                        weight: 1,
+                        opacity: 1,
+                        fillOpacity: 0.5
+                    };
+
+                    $.getJSON(dataurl, function (data) {
+
+                        L.geoJson(data, {
+                            pointToLayer: function (feature, latlng) {
+                                var marker = new L.CircleMarker(latlng, geojsonMarkerOptions);
+                                markerMap[feature.id] = marker;
+                                return marker
+                            },
+                            onEachFeature: function onEachFeature(feature, layer) {
+                                if (feature.properties && feature.properties.project_name) {
+                                    var $p = feature.properties;
+                                    layer.bindPopup("<strong>Project Name:</strong> " + $p.project_name + "<br /> " +
+                                           "<strong>University Affiliation:</strong> " + $p.affiliation + "<br /> " +
+                                            "<strong>Research Group:</strong> " + $p.research_group + "<br /> " +
+                                            "<strong>Department</strong> " + $p.department + "<br /> " +
+                                            "<strong>Website : </strong> <a href=" + $p.website + ">" + $p.website + "</a>"
+
+                                    );
+
+                                    if (!(feature.properties.affiliation in $keys)) {
+
+                                        $keys[feature.properties.affiliation] = L.layerGroup();
+                                        $keys[feature.properties.affiliation].addLayer(layer);
+
+                                    }
+                                    else {
+                                        $keys[feature.properties.affiliation].addLayer(layer);
+                                    }
+
+                                }
+
+                            }
+
+                        }).addTo(map);
+                        var s_mapLink =
+                                '<a href="http://openstreetmap.org">OpenStreetMap</a>';
+                        var s_wholink =
+                                '<a href="http://stamen.com">Stamen Design</a>';
+                        var s_basemap = L.tileLayer(
+                                'http://{s}.tile.stamen.com/watercolor/{z}/{x}/{y}.jpg', {
+                                    attribution: '&copy; ' + s_mapLink + ' Contributors & ' + s_wholink,
+                                    maxZoom: 18
+                                });
+                        var t_mapLink = '<a href="http://openstreetmap.org">OpenStreetMap</a>';
+                        var t_landlink = '<a href="http://thunderforest.com/">Thunderforest</a>';
+                        var t_basemap = L.tileLayer(
+                                'http://{s}.tile.thunderforest.com/landscape/{z}/{x}/{y}.png', {
+                                    attribution: '&copy; ' + t_mapLink + ' Contributors & ' + t_landlink,
+                                    maxZoom: 18
+                                });
+                        var basemaps = {
+                            "Stamen": s_basemap,
+                            "Thunderforest": t_basemap
+
+                        };
+                        L.control.layers(basemaps, $keys, {collapse: false}).addTo(map);
+                        $('input:checkbox').attr("checked", true);
+                    });
+
+
+                };
+
+                return {
+
+                };
+
+            })();
+
+        });
+
+
+    </script>
+
+</div>
+
+
+</body>
+</html>
