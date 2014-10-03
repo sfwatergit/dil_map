@@ -5,7 +5,6 @@ from django.contrib import admin
 import mongo_leaflet
 from web_mapping_mongo import settings
 
-admin.autodiscover()__import__(name[, globals, locals, fromlist, level])
 
 urlpatterns = patterns('',
     # Examples`:
