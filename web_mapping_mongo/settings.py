@@ -48,8 +48,9 @@ STATICFILES_DIRS = (
 # See:
 # https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#staticfiles-finders
 STATICFILES_FINDERS = (
-    'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+
     # 'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 # END STATIC FILE CONFIGURATION
@@ -58,6 +59,7 @@ STATICFILES_FINDERS = (
 # See:
 # https://docs.djangoproject.com/en/dev/ref/settings/#template-context-processors
 TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.core.context_processors.request',
     'django.contrib.auth.context_processors.auth',
     'django.core.context_processors.debug',
     'django.core.context_processors.i18n',
@@ -65,13 +67,9 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.static',
     'django.core.context_processors.tz',
     'django.contrib.messages.context_processors.messages',
-    'django.core.context_processors.request',
 )
 
-ADMINS = (
-    ('dil', 'dil@dil.berkeley.edu'),
-)
-MANAGERS = ADMINS
+
 
 DATABASES = {
     'default': {
@@ -79,11 +77,11 @@ DATABASES = {
         # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
         'NAME': 'dil_map',  # Or path to database file if using sqlite3.
         # The following settings are not used with sqlite3:
-        'USER': 'sidneyfeygin',
-        'PASSWORD': 'stoyag1985',
+        'USER': 'sid',
+        'PASSWORD': 'sid',
         # Empty for localhost through domain sockets or '127.0.0.1' for
         # localhost through TCP.
-        'HOST': '127.0.0.1',
+        'HOST': 'localhost',
         'PORT': '5432',  # Set to empty string for default.
     }
 }
@@ -157,11 +155,12 @@ TEMPLATE_DIRS = (
     os.path.join(os.path.dirname(__file__), '..', 'templates').replace('\\', '/'),)
 
 INSTALLED_APPS = (
-    'grappelli',
+    # 'grappelli',
+    'django.contrib.admin',
     'django.contrib.gis',
     'django.contrib.staticfiles',
     'djgeojson',
-    # 'geojson_tiles',
+    'geojson_tiles',
     'leaflet',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -171,7 +170,7 @@ INSTALLED_APPS = (
     # 'debug_toolbar',
     # 'debug_toolbar_extra',
     # Uncomment the next line to enable the admin:
-    'django.contrib.admin',
+
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
     'django_extensions',
@@ -187,19 +186,19 @@ SERIALIZATION_MODULES = {
     'geojson': 'djgeojson.serializers',
 }
 
-# TOOLBAR CONFIGURATION
-# See:
-# http://django-debug-toolbar.readthedocs.org/en/latest/installation.html#explicit-setup
-
-
+# # TOOLBAR CONFIGURATION
+# # See:
+# # http://django-debug-toolbar.readthedocs.org/en/latest/installation.html#explicit-setup
+#
+#
 # MIDDLEWARE_CLASSES += (
 #     'debug_toolbar.middleware.DebugToolbarMiddleware',
 # )
-
+#
 # DEBUG_TOOLBAR_PATCH_SETTINGS = False
 
 # http://django-debug-toolbar.readthedocs.org/en/latest/installation.html
-# INTERNAL_IPS = ('127.0.0.1',)
+INTERNAL_IPS = ('127.0.0.1',)
 # END TOOLBAR CONFIGURATION
 
 

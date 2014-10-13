@@ -4,6 +4,5 @@ from models import DILProject
 
 class ProjectResource(resources.ModelResource):
 
-
     class Meta:
         model = DILProject
