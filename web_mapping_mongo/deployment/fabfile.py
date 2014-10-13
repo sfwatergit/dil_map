@@ -44,7 +44,7 @@ def _update_virtualenv(source_folder):
     virtualenv_folder = source_folder + '/../virtualenv'
     if not exists(virtualenv_folder + '/bin/pip'): #1
         run('virtualenv %s' % (virtualenv_folder,))
-    run('%s/bin/pip install -r %s/requirements.txt' % (
+    run('%s/bin/pip install -r --allow-external %s/requirements.txt' % (
             virtualenv_folder, source_folder
     ))
 

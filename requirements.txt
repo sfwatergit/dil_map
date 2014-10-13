@@ -1,6 +1,5 @@
 Django==1.6.7
 Fabric==1.10.0
-ModestMaps==1.4.1
 PIL==1.1.7
 Shapely==1.4.3
 TileStache==1.40.1
